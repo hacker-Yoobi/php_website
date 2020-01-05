@@ -1,3 +1,15 @@
+<!--
+::: CONTENTS :::
+Project		: php_website
+Version		: 1.0
+Filename	: board_list.php
+Date		: 2020/01/05
+Purpose		: Ready for studying secure coding of WEB(PHP)
+Programmer	: Yoobi (ubyung1@gmail.com)
+Reviewer	:
+-->
+
+
 <html>
 	<head>
 		<meta charset = 'utf-8'>

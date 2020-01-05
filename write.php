@@ -1,3 +1,14 @@
+<!--
+::: CONTENTS :::
+Project		: php_website
+Version		: 1.0
+Filename	: delete.php
+Date		: 2020/01/04
+Purpose		: Ready for studying secure coding of WEB(PHP)
+Programmer	: Yoobi (ubyung1@gmail.com)
+Reviewer	:
+-->
+
 <?php
 	session_start();
 	$URL = "./board_list.php";
