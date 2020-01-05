@@ -1,27 +1,27 @@
 <?php
-$connect = mysqli_connect('localhost', 'yoobi', 'toor', 'php_db');
-$number = $_GET['number'];
-session_start();
+	$connect = mysqli_connect('localhost', 'yoobi', 'toor', 'php_db') or die("connect fail");
+	$number = $_GET['number'];
+	session_start();
 
-if(!isset($_SESSION['userid']))
-{
-	?>
+	if(!isset($_SESSION['userid']))
+	{
+?>
 		<script>
-		alert("로그인이 필요합니다.");
-	history.back();
-	</script>
-		<?php
-		exit();
-}
+			alert("Login First!");
+			history.back();
+		</script>
+<?php
+		exit;
+	}
 
-$hit = "update board set hit=hit+1 where number=$number";
-$connect->query($hit);
-$query = "select title, content, id, date, hit, name_orig from board where number =$number";
-$result = $connect->query($query);
-$rows = mysqli_fetch_assoc($result);
+	$hit = "update board set hit=hit+1 where number=$number";
+	$connect->query($hit);
+	$query = "select title, content, id, date, hit, name_orig from board where number =$number";
+	$result = $connect->query($query);
+	$rows = mysqli_fetch_assoc($result);
 
 ?>
-
+<!-- Simple style -->
 <style>
 	table
 	{
@@ -35,55 +35,57 @@ $rows = mysqli_fetch_assoc($result);
 	}
 </style>
 
-
-<table align=center>
-<tr align=center>
-<td colspan="4"><?php echo $rows['title']?></td>
-</tr>
-<tr align=center>
-<td>작성자</td>
-<td><?php echo $rows['id']?></td>
-<td>조회수</td>
-<td><?php echo $rows['hit']?></td>
-</tr>
-
-
-<tr>
-<td colspan="4" valign="top" height="500" style="word-break:break-all">
-<?php echo $rows['content']?></td>
-</tr>
-
-
-
-<tr align=center>
-<?php		if(!strcmp($rows['name_orig'],'0'))
-{
-	?>
-		<td colspan="4">
-		첨부파일이 없습니다.
-		</td>
-		<?php		}
-		else
-{
-	?>
-		<td colspan="4">
-		첨부파일 :
-		<a href="./download.php?file_id=<?=$number?>"><?php echo $rows['name_orig']?></a>
-		<?php		}
-		?>
-		</td>
+	<!-- Table start -->
+	<table align=center>
+		<tr align=center>
+			<td colspan="4"><?php echo $rows['title']?></td>
 		</tr>
-		</table>
+		<tr align=center>
+			<td>Written by</td>
+			<td><?php echo $rows['id']?></td>
+			<td>Views</td>
+			<td><?php echo $rows['hit']?></td>
+		</tr>
+		
+		<tr>
+			<td colspan="4" valign="top" height="500" style="word-break:break-all">
+				<?php echo $rows['content']?>
+			</td>
+		</tr>
+		
+		<tr align=center>
+<?php
+			if(!strcmp($rows['name_orig'],'0'))
+			{
+?>
+				<td colspan="4">
+					No File.
+				</td>
+<?php
+			}
+			else
+			{
+?>
+				<td colspan="4">
+					Uploaded File :
+					<a href="./download.php?file_id=<?=$number?>"><?php echo $rows['name_orig']?></a>
+<?php
+			}
+?>
+				</td>
+		</tr>
+	</table>
+	<!-- Table end -->
 
 
-		<!-- MODIFY & DELETE -->
-		<br>
-		<center>
-		<button onclick="location.href='./board_list.php'">목록으로</button>
-		<button onclick="location.href='./modify.php?number=<?=$number?>&id=<?=$_SESSION['userid']?>'">수정</button>
+	<!-- Modify & Delete -->
+	<br>
+	<center>
+		<button onclick="location.href='./board_list.php'">Back to List</button>
+		<button onclick="location.href='./modify.php?number=<?=$number?>&id=<?=$_SESSION['userid']?>'">Modify</button>
 
-		<button onclick="location.href='./delete.php?number=<?=$number?>&id=<?=$_SESSION['userid']?>'">삭제</button>
-		</center>
+		<button onclick="location.href='./delete.php?number=<?=$number?>&id=<?=$_SESSION['userid']?>'">Delete</button>
+	</center>
 
 
 
