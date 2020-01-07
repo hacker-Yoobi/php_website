@@ -1,4 +1,5 @@
-<!--
+<?php
+/*
 ::: CONTENTS :::
 Project		: php_website
 Version		: 1.0
@@ -7,9 +8,8 @@ Date		: 2020/01/05
 Purpose		: Ready for studying secure coding of WEB(PHP)
 Programmer	: Yoobi (ubyung1@gmail.com)
 Reviewer	:
--->
+*/
 
-<?php
 	//Connect MYSQL & download logic
 	$number = $_REQUEST['file_id'];
 	$connect = mysqli_connect('localhost', 'yoobi', 'toor', 'php_db');

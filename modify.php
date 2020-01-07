@@ -3,7 +3,7 @@
 Project		: php_website
 Version		: 1.0
 Filename	: delete.php
-Date		: 2020/01/04
+Date		: 2020/01/05
 Purpose		: Ready for studying secure coding of WEB(PHP)
 Programmer	: Yoobi (ubyung1@gmail.com)
 Reviewer	:
@@ -66,6 +66,7 @@ Reviewer	:
 					</td>
 				</tr>
 <?php
+				//If no file, show basic file upload
 				if(!strcmp($filename, '0'))
 				{
 ?>	
@@ -75,6 +76,7 @@ Reviewer	:
 					</tr>
 <?php
 				}
+				//If there is file, show the uploaded file name & delete option
 				else
 				{
 ?>
