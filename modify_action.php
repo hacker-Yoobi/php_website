@@ -3,19 +3,21 @@
 Project		: php_website
 Version		: 1.0
 Filename	: modify_action.php
-Date		: 2020/01/05
+Date		: 2020/01/08
 Purpose		: Ready for studying secure coding of WEB(PHP)
 Programmer	: Yoobi (ubyung1@gmail.com)
 Reviewer	:
 -->
 
 <?php
+	//Connect MYSQL
 	$connect = mysqli_connect("localhost", "yoobi", "toor", "php_db") or die ("connect fail");
 	$number = $_POST["number"];
 	$title = $_POST["title"];
 	$content = $_POST["content"];
 	$date = date('Y-m-d H:i:s');
 
+	//if the file exist
 	if(isset($_FILES['upfile']) && $_FILES['upfile']['name'] != "")
 	{
 		$file = $_FILES['upfile'];
@@ -24,17 +26,19 @@ Reviewer	:
 		$name_save = $number.'_'.$file_name;
 
 		$max_file_size = 5242880;
-
+		
+		//Check upload file size
 		if($file['size'] >= $max_file_size)
 		{
 ?>	
 			<script>
-				alert("5MB까지만 업로드 가능합니다.");
+				alert("Sorry, only smaller than 5MB file can be uploaded.");
 				history.back();
 			</script>
 <?php
 		}
-
+	
+		//file uploading part
 		if(move_uploaded_file($file['tmp_name'], $upload_directory.$name_save))
 		{
 			$query = "update board set title='$title', content='$content', date='$date', name_orig='$file_name', name_save='$name_save'";
@@ -44,7 +48,7 @@ Reviewer	:
 			{
 ?>
 				<script>
-					alert("글이 수정2되었습니다.");
+					alert("Post has been modified sucessfully.");
 					location.replace("./view.php?number=<?=$number?>");
 				</script>
 <?php
@@ -58,6 +62,7 @@ Reviewer	:
 			exit;
 		}
 	}
+	//if the file do not exist
 	else
 	{
 		$query = "update board set title='$title', content='$content', date='$date' where number=$number";
@@ -67,7 +72,7 @@ Reviewer	:
 		{
 ?>
 			<script>
-				alert("수정되었습니다.");
+				alert("Post has been modified sucessfully.");
 				location.replace("./view.php?number=<?=$number?>");
 			</script>
 <?php  

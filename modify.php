@@ -2,7 +2,7 @@
 ::: CONTENTS :::
 Project		: php_website
 Version		: 1.0
-Filename	: delete.php
+Filename	: modify.php
 Date		: 2020/01/05
 Purpose		: Ready for studying secure coding of WEB(PHP)
 Programmer	: Yoobi (ubyung1@gmail.com)
@@ -82,7 +82,7 @@ Reviewer	:
 ?>
 					<tr>
 						<td>File</td>
-						<td><?=$filename?> <a href="modify_file_delte_action.php?number=<?=$number?>">Delete uploaded file</a></td>
+						<td><?=$filename?> <a href="modify_file_delete_action.php?number=<?=$number?>">Delete uploaded file</a></td>
 					</tr>
 <?php
 				}
