@@ -1,0 +1,31 @@
+::: CONTENTS :::
+Project		: php_website
+Version		: 1.0
+Filename	: mysql_setting_file.txt
+Date		: 2020/01/09
+Purpose		: Ready for studying secure coding of WEB(PHP)
+Programmer	: Yoobi (ubyung1@gmail.com)
+Reviewer	:
+
+STEP1
+MYSQL userid  : yoobi
+MYSQL userpw  : toor
+MYSQL DB name : php_db
+
+::command::
+mysql> mysql -u root -p
+mysql> use mysql;
+mysql> create user 'yoobi'@localhost identified by 'toor';
+
+STEP2
+MYSQL DB : php_db
+
+::command::
+mysql> create database php_db default character set uft8;
+mysql> grant all privileges on php_db.* to yoobi@localhost identified by 'toor';
+
+STEP3
+MYSQL TABLE : member & board
+
+::command::
+mysql>  
