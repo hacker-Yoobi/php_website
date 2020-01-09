@@ -38,7 +38,7 @@ Reviewer	:
 ?>
 		<center>
 			Welcome! <?=$_SESSION["userid"]?><br><br>
-			<button onclick="location.href='./logout.php'">LOGOUT</button>
+			<button onclick="location.href='./logout.php'">SIGN OUT</button>
 		</center>
 <?php
 	}

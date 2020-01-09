@@ -2,7 +2,7 @@
 ::: CONTENTS :::
 Project		: php_website
 Version		: 1.0
-Filename	: delete.php
+Filename	: logout.php
 Date		: 2020/01/05
 Purpose		: Ready for studying secure coding of WEB(PHP)
 Programmer	: Yoobi (ubyung1@gmail.com)
@@ -16,7 +16,7 @@ Reviewer	:
         if($result) {
 ?>
         <script>
-                alert("로그아웃 되었습니다.");
+                alert("Successfully signed out.");
 		history.back();
         </script>
 <?php   }
