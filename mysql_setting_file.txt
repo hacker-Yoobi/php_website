@@ -28,4 +28,26 @@ STEP3
 MYSQL TABLE : member & board
 
 ::command::
-mysql>  
+mysql>
+create table `board`
+(
+	`number` int(10) unsigned not null auto_increment primary key,
+	`title` varchar(150) not null,
+	`content` text not null,
+	`id` varchar(20) not null,
+	`password` varchar(20) not null,
+	`date` datetime not null,
+	`hit` int(10) unsigned default '0' not null,
+	`name_orig` varchar(255),
+	`name_save` varchar(255)
+);
+
+mysql>
+create table `member`
+( 
+	`id` varchar(16) not null,
+	`pw` varchar(20) not null,
+	`email` varchar(20) not null,
+	`date` datetime not null,
+	`permit` tinyint(3) unsigned
+);
